@@ -1,11 +1,13 @@
 import com.soywiz.kds.*
 import com.soywiz.klock.*
+import com.soywiz.korev.*
 import com.soywiz.korge.*
 import com.soywiz.korge.input.*
 import com.soywiz.korge.input.MouseEvents
 import com.soywiz.korge.input.mouse
 import com.soywiz.korge.render.*
 import com.soywiz.korge.scene.*
+import com.soywiz.korge.tiled.*
 import com.soywiz.korge.time.*
 import com.soywiz.korge.tween.*
 import com.soywiz.korge.view.*
@@ -29,44 +31,44 @@ import com.soywiz.korim.bitmap.*
 // TODO: use sample-minesweeper
 // TODO: use sample-tic-tac-toe-swf
 // TODO: use sample-input for button click
-//suspend fun main() = Korge(width = 512, height = 512) {
-//	val tiledMap = resourcesVfs["gfx/sample.tmx"].readTiledMap()
-//	fixedSizeContainer(256, 256, clip = true) {
-//		position(128, 128)
-//		val camera = camera {
-//			tiledMapView(tiledMap) {
-//			}
-//		}
-//		this.keys.apply {
-//			down { key ->
-//				when (key) {
-//					Key.RIGHT -> camera.moveBy(-16, 0, 0.25.seconds)
-//					Key.LEFT -> camera.moveBy(+16, 0, 0.25.seconds)
-//					Key.DOWN -> camera.moveBy(0, -16, 0.25.seconds)
-//					Key.UP -> camera.moveBy(0, +16, 0.25.seconds)
-//				}
-//			}
-//		}
-//	}
-//}
-//
-suspend fun main(): Unit {
-	//Logger.defaultLevel = Logger.Level.TRACE
-	//Logger("Views").level = Logger.Level.TRACE
-	//Logger("Korge").level = Logger.Level.TRACE
-	//Logger("RenderContext").level = Logger.Level.TRACE
-	//Logger("BatchBuilder2D").level = Logger.Level.TRACE
-	//Logger("DefaultShaders").level = Logger.Level.TRACE
-	//Logger("RenderContext2D").level = Logger.Level.TRACE
-	//Korge(MyModule, debug = true)
-	println("V0")
-	println("KorioNative.ResourcesVfs.absolutePath: " + resourcesVfs.absolutePath)
-
-	com.soywiz.korge.Korge(Korge.Config(object : MyModule() {
-		//override val mainScene: KClass<out Scene> = HelloScene::class
-		override val quality: GameWindow.Quality = GameWindow.Quality.QUALITY
-	}, debug = false))
+suspend fun main() = Korge(width = 540, height = 720) {
+	val tiledMap = resourcesVfs["gfx/PC013.tmx"].readTiledMap()
+	fixedSizeContainer(540, 720, clip = true) {
+		position(0, 0)
+		val camera = camera {
+			tiledMapView(tiledMap) {
+			}
+		}
+		this.keys.apply {
+			down { key ->
+				when (key) {
+					Key.RIGHT -> camera.moveBy(-16, 0, 0.25.seconds)
+					Key.LEFT -> camera.moveBy(+16, 0, 0.25.seconds)
+					Key.DOWN -> camera.moveBy(0, -16, 0.25.seconds)
+					Key.UP -> camera.moveBy(0, +16, 0.25.seconds)
+				}
+			}
+		}
+	}
 }
+
+//suspend fun main(): Unit {
+//	//Logger.defaultLevel = Logger.Level.TRACE
+//	//Logger("Views").level = Logger.Level.TRACE
+//	//Logger("Korge").level = Logger.Level.TRACE
+//	//Logger("RenderContext").level = Logger.Level.TRACE
+//	//Logger("BatchBuilder2D").level = Logger.Level.TRACE
+//	//Logger("DefaultShaders").level = Logger.Level.TRACE
+//	//Logger("RenderContext2D").level = Logger.Level.TRACE
+//	//Korge(MyModule, debug = true)
+//	println("V0")
+//	println("KorioNative.ResourcesVfs.absolutePath: " + resourcesVfs.absolutePath)
+//
+//	com.soywiz.korge.Korge(Korge.Config(object : MyModule() {
+//		//override val mainScene: KClass<out Scene> = HelloScene::class
+//		override val quality: GameWindow.Quality = GameWindow.Quality.QUALITY
+//	}, debug = false))
+//}
 
 suspend fun Stage.hello() {
 	println("HelloScene.sceneInit[0]")
